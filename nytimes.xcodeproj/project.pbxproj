@@ -9,17 +9,21 @@
 /* Begin PBXBuildFile section */
 		24F628AE2672C6CA0036218C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F628AD2672C6CA0036218C /* AppDelegate.swift */; };
 		24F628B02672C6CA0036218C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F628AF2672C6CA0036218C /* SceneDelegate.swift */; };
-		24F628B22672C6CA0036218C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F628B12672C6CA0036218C /* ViewController.swift */; };
 		24F628B72672C6CD0036218C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24F628B62672C6CD0036218C /* Assets.xcassets */; };
+		24F628C42672C8750036218C /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F628C32672C8750036218C /* MainTabViewController.swift */; };
+		24F628C72672CA0F0036218C /* HomeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F628C62672CA0F0036218C /* HomeCollectionViewController.swift */; };
+		24F628C92672CCAC0036218C /* SearchCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F628C82672CCAC0036218C /* SearchCollectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		24F628AA2672C6CA0036218C /* nytimes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = nytimes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		24F628AD2672C6CA0036218C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		24F628AF2672C6CA0036218C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		24F628B12672C6CA0036218C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		24F628B62672C6CD0036218C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		24F628BB2672C6CD0036218C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		24F628C32672C8750036218C /* MainTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
+		24F628C62672CA0F0036218C /* HomeCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewController.swift; sourceTree = "<group>"; };
+		24F628C82672CCAC0036218C /* SearchCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,7 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				24F628C12672C7550036218C /* SupportFiles */,
-				24F628B12672C6CA0036218C /* ViewController.swift */,
+				24F628C22672C82E0036218C /* Controllers */,
 				24F628B62672C6CD0036218C /* Assets.xcassets */,
 				24F628BB2672C6CD0036218C /* Info.plist */,
 			);
@@ -67,6 +71,16 @@
 				24F628AF2672C6CA0036218C /* SceneDelegate.swift */,
 			);
 			path = SupportFiles;
+			sourceTree = "<group>";
+		};
+		24F628C22672C82E0036218C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				24F628C32672C8750036218C /* MainTabViewController.swift */,
+				24F628C62672CA0F0036218C /* HomeCollectionViewController.swift */,
+				24F628C82672CCAC0036218C /* SearchCollectionViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +151,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				24F628B22672C6CA0036218C /* ViewController.swift in Sources */,
+				24F628C42672C8750036218C /* MainTabViewController.swift in Sources */,
 				24F628AE2672C6CA0036218C /* AppDelegate.swift in Sources */,
+				24F628C72672CA0F0036218C /* HomeCollectionViewController.swift in Sources */,
+				24F628C92672CCAC0036218C /* SearchCollectionViewController.swift in Sources */,
 				24F628B02672C6CA0036218C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
