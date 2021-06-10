@@ -10,9 +10,7 @@
 		24F628AE2672C6CA0036218C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F628AD2672C6CA0036218C /* AppDelegate.swift */; };
 		24F628B02672C6CA0036218C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F628AF2672C6CA0036218C /* SceneDelegate.swift */; };
 		24F628B22672C6CA0036218C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F628B12672C6CA0036218C /* ViewController.swift */; };
-		24F628B52672C6CA0036218C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24F628B32672C6CA0036218C /* Main.storyboard */; };
 		24F628B72672C6CD0036218C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24F628B62672C6CD0036218C /* Assets.xcassets */; };
-		24F628BA2672C6CD0036218C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24F628B82672C6CD0036218C /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,9 +18,7 @@
 		24F628AD2672C6CA0036218C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		24F628AF2672C6CA0036218C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		24F628B12672C6CA0036218C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		24F628B42672C6CA0036218C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		24F628B62672C6CD0036218C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		24F628B92672C6CD0036218C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		24F628BB2672C6CD0036218C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -56,15 +52,21 @@
 		24F628AC2672C6CA0036218C /* nytimes */ = {
 			isa = PBXGroup;
 			children = (
-				24F628AD2672C6CA0036218C /* AppDelegate.swift */,
-				24F628AF2672C6CA0036218C /* SceneDelegate.swift */,
+				24F628C12672C7550036218C /* SupportFiles */,
 				24F628B12672C6CA0036218C /* ViewController.swift */,
-				24F628B32672C6CA0036218C /* Main.storyboard */,
 				24F628B62672C6CD0036218C /* Assets.xcassets */,
-				24F628B82672C6CD0036218C /* LaunchScreen.storyboard */,
 				24F628BB2672C6CD0036218C /* Info.plist */,
 			);
 			path = nytimes;
+			sourceTree = "<group>";
+		};
+		24F628C12672C7550036218C /* SupportFiles */ = {
+			isa = PBXGroup;
+			children = (
+				24F628AD2672C6CA0036218C /* AppDelegate.swift */,
+				24F628AF2672C6CA0036218C /* SceneDelegate.swift */,
+			);
+			path = SupportFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -124,9 +126,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				24F628BA2672C6CD0036218C /* LaunchScreen.storyboard in Resources */,
 				24F628B72672C6CD0036218C /* Assets.xcassets in Resources */,
-				24F628B52672C6CA0036218C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,25 +144,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		24F628B32672C6CA0036218C /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				24F628B42672C6CA0036218C /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		24F628B82672C6CD0036218C /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				24F628B92672C6CD0036218C /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		24F628BC2672C6CD0036218C /* Debug */ = {
