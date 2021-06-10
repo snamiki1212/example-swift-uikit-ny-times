@@ -13,6 +13,7 @@
 		24F628C42672C8750036218C /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F628C32672C8750036218C /* MainTabViewController.swift */; };
 		24F628C72672CA0F0036218C /* HomeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F628C62672CA0F0036218C /* HomeCollectionViewController.swift */; };
 		24F628C92672CCAC0036218C /* SearchCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F628C82672CCAC0036218C /* SearchCollectionViewController.swift */; };
+		24F628CB2672D5910036218C /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F628CA2672D5910036218C /* Secret.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		24F628C32672C8750036218C /* MainTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
 		24F628C62672CA0F0036218C /* HomeCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewController.swift; sourceTree = "<group>"; };
 		24F628C82672CCAC0036218C /* SearchCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewController.swift; sourceTree = "<group>"; };
+		24F628CA2672D5910036218C /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 			children = (
 				24F628AD2672C6CA0036218C /* AppDelegate.swift */,
 				24F628AF2672C6CA0036218C /* SceneDelegate.swift */,
+				24F628CA2672D5910036218C /* Secret.swift */,
 			);
 			path = SupportFiles;
 			sourceTree = "<group>";
@@ -152,6 +155,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				24F628C42672C8750036218C /* MainTabViewController.swift in Sources */,
+				24F628CB2672D5910036218C /* Secret.swift in Sources */,
 				24F628AE2672C6CA0036218C /* AppDelegate.swift in Sources */,
 				24F628C72672CA0F0036218C /* HomeCollectionViewController.swift in Sources */,
 				24F628C92672CCAC0036218C /* SearchCollectionViewController.swift in Sources */,
