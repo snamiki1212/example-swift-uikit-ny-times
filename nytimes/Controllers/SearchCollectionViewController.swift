@@ -15,6 +15,27 @@ class SearchCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         collectionView.backgroundColor = .systemBlue
+        fetchRemote()
+    }
+    var response: Any?
+    
+    func updateUIView (){
+        print("TODO: UPDATE UI VIEW", response)
+    }
+    
+    func fetchRemote (){
+        ArticleSearchRequest().send { result in
+            print("IN SEND")
+            switch result {
+            case .success(let res):
+                self.response = res
+            case .failure:
+                self.response = nil
+            }
+            DispatchQueue.main.async {
+                self.updateUIView()
+            }
+        }
     }
 
     /*

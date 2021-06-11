@@ -14,6 +14,7 @@
 		24F628C72672CA0F0036218C /* HomeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F628C62672CA0F0036218C /* HomeCollectionViewController.swift */; };
 		24F628C92672CCAC0036218C /* SearchCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F628C82672CCAC0036218C /* SearchCollectionViewController.swift */; };
 		24F628CB2672D5910036218C /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F628CA2672D5910036218C /* Secret.swift */; };
+		24F628CE2672D94B0036218C /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F628CD2672D94B0036218C /* API.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		24F628C62672CA0F0036218C /* HomeCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewController.swift; sourceTree = "<group>"; };
 		24F628C82672CCAC0036218C /* SearchCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewController.swift; sourceTree = "<group>"; };
 		24F628CA2672D5910036218C /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
+		24F628CD2672D94B0036218C /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				24F628C12672C7550036218C /* SupportFiles */,
+				24F628CC2672D9390036218C /* Models */,
 				24F628C22672C82E0036218C /* Controllers */,
 				24F628B62672C6CD0036218C /* Assets.xcassets */,
 				24F628BB2672C6CD0036218C /* Info.plist */,
@@ -84,6 +87,14 @@
 				24F628C82672CCAC0036218C /* SearchCollectionViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		24F628CC2672D9390036218C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				24F628CD2672D94B0036218C /* API.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,6 +165,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24F628CE2672D94B0036218C /* API.swift in Sources */,
 				24F628C42672C8750036218C /* MainTabViewController.swift in Sources */,
 				24F628CB2672D5910036218C /* Secret.swift in Sources */,
 				24F628AE2672C6CA0036218C /* AppDelegate.swift in Sources */,
