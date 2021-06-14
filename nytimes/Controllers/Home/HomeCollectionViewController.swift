@@ -7,8 +7,7 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
-
+// MARK: - ViewModel ---------
 enum Section {
     case header
     case body
@@ -40,9 +39,6 @@ extension Item {
     }
 }
 
-class Cell: UICollectionViewCell {
-    
-}
 
 //------------------------------------------------------------
 
@@ -122,37 +118,20 @@ class HomeCollectionViewController: UICollectionViewController {
         let snapshot: NSDiffableDataSourceSnapshot<Section, Item> = {
             var ss = NSDiffableDataSourceSnapshot<Section, Item>()
             
-            // TODO: refactor to one loop
-            ss.appendSections([Section.header, Section.body])
-            ss.appendItems(Item.createExampleList(), toSection: Section.header)
-            ss.appendItems(Item.createExampleList(), toSection: Section.body)
-
+            let list = [
+                (Section.header, Item.createExampleList()),
+                (Section.body, Item.createExampleList()),
+            ]
+            
+            for (section, items) in list {
+                ss.appendSections([section])
+                ss.appendItems(items, toSection: section)
+            }
+            
             return ss
         }()
         
         sections = snapshot.sectionIdentifiers
         dataSource.apply(snapshot)
     }
-    
-
-    // MARK: UICollectionViewDataSource
-
-//    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 0
-//    }
-//
-//
-//    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        // #warning Incomplete implementation, return the number of items
-//        return 0
-//    }
-//
-//    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-//
-//        // Configure the cell
-//
-//        return cell
-//    }
 }

@@ -43,6 +43,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		24A4285726781F550035DA6D /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				24F628C62672CA0F0036218C /* HomeCollectionViewController.swift */,
+				24A428552677E54A0035DA6D /* HomeTopCollectionViewCell.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		24F628A12672C6CA0036218C = {
 			isa = PBXGroup;
 			children = (
@@ -85,8 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				24F628C32672C8750036218C /* MainTabViewController.swift */,
-				24F628C62672CA0F0036218C /* HomeCollectionViewController.swift */,
-				24A428552677E54A0035DA6D /* HomeTopCollectionViewCell.swift */,
+				24A4285726781F550035DA6D /* Home */,
 				24F628C82672CCAC0036218C /* SearchCollectionViewController.swift */,
 			);
 			path = Controllers;
