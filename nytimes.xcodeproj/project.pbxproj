@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		24A428562677E54A0035DA6D /* HomeTopCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A428552677E54A0035DA6D /* HomeTopCollectionViewCell.swift */; };
 		24F628AE2672C6CA0036218C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F628AD2672C6CA0036218C /* AppDelegate.swift */; };
 		24F628B02672C6CA0036218C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F628AF2672C6CA0036218C /* SceneDelegate.swift */; };
 		24F628B72672C6CD0036218C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24F628B62672C6CD0036218C /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		24A428552677E54A0035DA6D /* HomeTopCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTopCollectionViewCell.swift; sourceTree = "<group>"; };
 		24F628AA2672C6CA0036218C /* nytimes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = nytimes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		24F628AD2672C6CA0036218C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		24F628AF2672C6CA0036218C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 			children = (
 				24F628C32672C8750036218C /* MainTabViewController.swift */,
 				24F628C62672CA0F0036218C /* HomeCollectionViewController.swift */,
+				24A428552677E54A0035DA6D /* HomeTopCollectionViewCell.swift */,
 				24F628C82672CCAC0036218C /* SearchCollectionViewController.swift */,
 			);
 			path = Controllers;
@@ -170,6 +173,7 @@
 				24F628CB2672D5910036218C /* Secret.swift in Sources */,
 				24F628AE2672C6CA0036218C /* AppDelegate.swift in Sources */,
 				24F628C72672CA0F0036218C /* HomeCollectionViewController.swift in Sources */,
+				24A428562677E54A0035DA6D /* HomeTopCollectionViewCell.swift in Sources */,
 				24F628C92672CCAC0036218C /* SearchCollectionViewController.swift in Sources */,
 				24F628B02672C6CA0036218C /* SceneDelegate.swift in Sources */,
 			);

@@ -104,6 +104,8 @@ extension SearchResponse: Codable {}
 
 struct ArticleResponse {
     // REF: https://developer.nytimes.com/docs/articlesearch-product/1/types/Article
+    
+    // TODO: add alot of proparties
     let _id: String
     let web_url: String
 }
