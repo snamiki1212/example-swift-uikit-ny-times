@@ -11,7 +11,14 @@ class HomeTopCollectionViewCell: UICollectionViewCell {
     static let reuseIdentifier = "HOME_TOP_COLLECTION_VIEW_CELL"
     var item: ArticleResponse? {
         didSet {
-            titleLabel.text = item?.headline.main
+            // for label
+            guard let item = item else { return }
+            titleLabel.text = item.headline.main
+            
+            // for img
+            guard let urlString = item.imageUrl else { return }
+            let url = URL(string: urlString)!
+            self.thumbnail.load(url: url)
         }
     }
     
@@ -21,16 +28,30 @@ class HomeTopCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
+    let thumbnail: UIImageView = {
+        let img = UIImageView()
+        img.translatesAutoresizingMaskIntoConstraints = false
+        return img
+    }()
+    
+    lazy var hStack: UIStackView = {
+        let list = [thumbnail, titleLabel]
+        let stack = UIStackView(arrangedSubviews: list)
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.axis = .vertical
+        return stack
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         // for styles
-        contentView.addSubview(titleLabel)
+        contentView.addSubview(hStack)
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: topAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
+            hStack.topAnchor.constraint(equalTo: topAnchor),
+            hStack.leadingAnchor.constraint(equalTo: leadingAnchor),
+            hStack.trailingAnchor.constraint(equalTo: trailingAnchor),
+            hStack.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
     }
     
