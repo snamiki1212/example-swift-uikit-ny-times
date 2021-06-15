@@ -78,6 +78,14 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		24A42862267967250035DA6D /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				24F628C82672CCAC0036218C /* SearchCollectionViewController.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 		24F628A12672C6CA0036218C = {
 			isa = PBXGroup;
 			children = (
@@ -123,7 +131,7 @@
 			children = (
 				24F628C32672C8750036218C /* MainTabViewController.swift */,
 				24A4285726781F550035DA6D /* Home */,
-				24F628C82672CCAC0036218C /* SearchCollectionViewController.swift */,
+				24A42862267967250035DA6D /* Search */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
