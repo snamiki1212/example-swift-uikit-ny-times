@@ -7,10 +7,13 @@
 
 import UIKit
 
+typealias Response = SearchEntireResponse
+
 class HomeCollectionViewController: UICollectionViewController {
     
     var dataSource: UICollectionViewDiffableDataSource<HomeSection, HomeItem>!
     var sections = [HomeSection]()
+    var response: Response?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +22,7 @@ class HomeCollectionViewController: UICollectionViewController {
         collectionView.register(HomeTopCollectionViewCell.self, forCellWithReuseIdentifier: HomeTopCollectionViewCell.reuseIdentifier)
         collectionView.backgroundColor = .white
         configureDataSource()
+        fetchRemote()
     }
     
     private func createLayout() -> UICollectionViewCompositionalLayout {
@@ -62,7 +66,21 @@ class HomeCollectionViewController: UICollectionViewController {
         return layout
     }
     
-    func configureDataSource(){
+    private func fetchRemote (){
+        ArticleSearchRequest().send { result in
+            switch result {
+            case .success(let res):
+                self.response = res
+            case .failure:
+                self.response = nil
+            }
+            DispatchQueue.main.async {
+                self.configureDataSource()
+            }
+        }
+    }
+    
+    private func configureDataSource(){
         dataSource = .init(collectionView: collectionView, cellProvider: { collectionView, indexPath, item in
             
             let section = self.sections[indexPath.section]
@@ -83,7 +101,7 @@ class HomeCollectionViewController: UICollectionViewController {
         let snapshot: NSDiffableDataSourceSnapshot<HomeSection, HomeItem> = {
             var ss = NSDiffableDataSourceSnapshot<HomeSection, HomeItem>()
             
-            let exampleList = HomeItem.createExampleList()
+            guard let exampleList = self.response?.response.docs else { return ss }
             let headerList = [exampleList[0]]
             let bodyList = Array(exampleList[1...])
             
