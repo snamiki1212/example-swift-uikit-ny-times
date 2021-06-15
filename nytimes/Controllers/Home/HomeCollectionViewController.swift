@@ -7,51 +7,10 @@
 
 import UIKit
 
-// MARK: - ViewModel ---------
-enum Section {
-    case header
-    case body
-}
-
-typealias Item = ArticleResponse
-extension Item: Hashable {
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(_id)
-    }
-    
-    static func == (lhs: ArticleResponse, rhs: ArticleResponse) -> Bool {
-        lhs._id == rhs._id
-    }
-}
-
-extension Item {
-    static func createExample() -> ArticleResponse {
-        let id = UUID.init().uuidString
-        let headline = Headline(main: "this is headline")
-        let multimedia = Multimedia(subType: "xlarge", url: "images/2021/06/14/lens/14xp-dogs/merlin_177669612_2c5d593f-2e57-4a15-ae69-dbbffa5fd626-articleLarge.jpg")
-        return ArticleResponse(_id: id, web_url: "WEB_URL" + id, headline: headline, multimedia: [multimedia])
-    }
-    
-    static func createExampleList() -> [Item] {
-        return [
-            Item.createExample(),
-            Item.createExample(),
-            Item.createExample(),
-            Item.createExample(),
-            Item.createExample(),
-            Item.createExample(),
-            Item.createExample(),
-        ]
-    }
-}
-
-
-//------------------------------------------------------------
-
 class HomeCollectionViewController: UICollectionViewController {
     
-    var dataSource: UICollectionViewDiffableDataSource<Section, Item>!
-    var sections = [Section]()
+    var dataSource: UICollectionViewDiffableDataSource<HomeSection, HomeItem>!
+    var sections = [HomeSection]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -121,16 +80,16 @@ class HomeCollectionViewController: UICollectionViewController {
             }
         })
         
-        let snapshot: NSDiffableDataSourceSnapshot<Section, Item> = {
-            var ss = NSDiffableDataSourceSnapshot<Section, Item>()
+        let snapshot: NSDiffableDataSourceSnapshot<HomeSection, HomeItem> = {
+            var ss = NSDiffableDataSourceSnapshot<HomeSection, HomeItem>()
             
-            let exampleList = Item.createExampleList()
+            let exampleList = HomeItem.createExampleList()
             let headerList = [exampleList[0]]
             let bodyList = Array(exampleList[1...])
             
-            let list: [(Section, Array<Item>)] = [
-                (Section.header, headerList),
-                (Section.body, bodyList),
+            let list: [(HomeSection, Array<HomeItem>)] = [
+                (HomeSection.header, headerList),
+                (HomeSection.body, bodyList),
             ]
             
             for (section, items) in list {
