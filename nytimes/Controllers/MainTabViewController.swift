@@ -13,7 +13,7 @@ class MainTabViewController: UITabBarController {
         let vc: HomeCollectionViewController = {
             let layout = UICollectionViewLayout()
             let vc = HomeCollectionViewController(collectionViewLayout: layout)
-            let image = UIImage(systemName: "folder")
+            let image = TextImage.imageWith(name: "𝔑")
             vc.tabBarItem =  UITabBarItem(title: "Home", image: image, tag: 1)
             return vc
         }()
