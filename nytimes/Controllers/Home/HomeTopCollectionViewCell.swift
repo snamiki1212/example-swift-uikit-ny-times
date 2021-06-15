@@ -11,7 +11,7 @@ class HomeTopCollectionViewCell: UICollectionViewCell {
     static let reuseIdentifier = "HOME_TOP_COLLECTION_VIEW_CELL"
     var item: ArticleResponse? {
         didSet {
-            titleLabel.text = item?.web_url
+            titleLabel.text = item?.headline.main
         }
     }
     

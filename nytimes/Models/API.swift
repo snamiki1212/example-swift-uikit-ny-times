@@ -108,9 +108,29 @@ struct ArticleResponse {
     // TODO: add alot of proparties
     let _id: String
     let web_url: String
+    let headline: Headline
+    let multimedia: [Multimedia]
+    var imageUrl: String {
+        guard let pickedIdx = multimedia.firstIndex(where: {media in   media.subType == "xlarge" } ) else { return "" }
+        let picked = multimedia[pickedIdx]
+        
+        return ArticleResponse.multimediaPrefixUrl + picked.url
+    }
+    static let multimediaPrefixUrl = "https://static01.nyt.com/"
 }
 extension ArticleResponse: Codable {}
- 
+
+struct Headline {
+    let main: String
+}
+extension Headline: Codable {}
+
+struct Multimedia {
+    let subType: String
+    let url: String
+}
+
+extension Multimedia: Codable{}
 
 struct ResponseMeta {
     let hits: Int

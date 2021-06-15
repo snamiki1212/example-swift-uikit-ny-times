@@ -27,7 +27,9 @@ extension Item: Hashable {
 extension Item {
     static func createExample() -> ArticleResponse {
         let id = UUID.init().uuidString
-        return ArticleResponse(_id: id, web_url: "WEB_URL" + id)
+        let headline = Headline(main: "this is headline")
+        let multimedia = Multimedia(subType: "xlarge", url: "images/2021/06/14/lens/14xp-dogs/merlin_177669612_2c5d593f-2e57-4a15-ae69-dbbffa5fd626-articleLarge.jpg")
+        return ArticleResponse(_id: id, web_url: "WEB_URL" + id, headline: headline, multimedia: [multimedia])
     }
     
     static func createExampleList() -> [Item] {
