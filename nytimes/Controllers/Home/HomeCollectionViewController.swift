@@ -35,6 +35,10 @@ extension Item {
             Item.createExample(),
             Item.createExample(),
             Item.createExample(),
+            Item.createExample(),
+            Item.createExample(),
+            Item.createExample(),
+            Item.createExample(),
         ]
     }
 }
@@ -66,13 +70,13 @@ class HomeCollectionViewController: UICollectionViewController {
             switch section {
             case .header:
                 let item: NSCollectionLayoutItem = {
-                    let layoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(1/2))
+                    let layoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(1/3))
                     let item = NSCollectionLayoutItem(layoutSize: layoutSize)
                     return item
                 }()
                 
                 let section: NSCollectionLayoutSection = {
-                    let layoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(1/2))
+                    let layoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension:  .fractionalWidth(1/3))
                     let group = NSCollectionLayoutGroup.vertical(layoutSize: layoutSize, subitems: [item])
                     let section = NSCollectionLayoutSection(group: group)
                     return section
@@ -80,14 +84,14 @@ class HomeCollectionViewController: UICollectionViewController {
                 return section
             case .body:
                 let item: NSCollectionLayoutItem = {
-                    let layoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(1/2))
+                    let layoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1/2), heightDimension: .fractionalWidth(1/4))
                     let item = NSCollectionLayoutItem(layoutSize: layoutSize)
                     return item
                 }()
                 
                 let section: NSCollectionLayoutSection = {
-                    let layoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(1/2))
-                    let group = NSCollectionLayoutGroup.vertical(layoutSize: layoutSize, subitems: [item])
+                    let layoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(1/4))
+                    let group = NSCollectionLayoutGroup.horizontal(layoutSize: layoutSize, subitems: [item])
                     let section = NSCollectionLayoutSection(group: group)
                     return section
                 }()
@@ -118,9 +122,13 @@ class HomeCollectionViewController: UICollectionViewController {
         let snapshot: NSDiffableDataSourceSnapshot<Section, Item> = {
             var ss = NSDiffableDataSourceSnapshot<Section, Item>()
             
-            let list = [
-                (Section.header, Item.createExampleList()),
-                (Section.body, Item.createExampleList()),
+            let exampleList = Item.createExampleList()
+            let headerList = [exampleList[0]]
+            let bodyList = Array(exampleList[1...])
+            
+            let list: [(Section, Array<Item>)] = [
+                (Section.header, headerList),
+                (Section.body, bodyList),
             ]
             
             for (section, items) in list {
