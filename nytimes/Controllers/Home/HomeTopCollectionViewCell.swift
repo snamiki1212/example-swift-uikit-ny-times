@@ -25,12 +25,17 @@ class HomeTopCollectionViewCell: UICollectionViewCell {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.lineBreakMode = .byWordWrapping
+        label.numberOfLines = 3
         return label
     }()
     
     let thumbnail: UIImageView = {
         let img = UIImageView()
         img.translatesAutoresizingMaskIntoConstraints = false
+        img.contentMode = .scaleAspectFit
+        img.layer.masksToBounds = true
+        img.layer.cornerRadius = 10
         return img
     }()
     

@@ -17,11 +17,16 @@ class HomeCollectionViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // styles
+        collectionView.backgroundColor = .white
         
+        // configures
         collectionView.collectionViewLayout = createLayout()
         collectionView.register(HomeTopCollectionViewCell.self, forCellWithReuseIdentifier: HomeTopCollectionViewCell.reuseIdentifier)
-        collectionView.backgroundColor = .white
         configureDataSource()
+     
+        // async processes
         fetchRemote()
     }
     
@@ -35,13 +40,18 @@ class HomeCollectionViewController: UICollectionViewController {
             switch section {
             case .header:
                 let item: NSCollectionLayoutItem = {
-                    let layoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(1/3))
-                    let item = NSCollectionLayoutItem(layoutSize: layoutSize)
+                    let layoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(1))
+                    let item: NSCollectionLayoutItem = {
+                        let item = NSCollectionLayoutItem(layoutSize: layoutSize)
+                        let padding = CGFloat(10)
+                        item.contentInsets = NSDirectionalEdgeInsets(top: padding, leading: padding, bottom: padding, trailing: padding)
+                        return item
+                    }()
                     return item
                 }()
                 
                 let section: NSCollectionLayoutSection = {
-                    let layoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension:  .fractionalWidth(1/3))
+                    let layoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension:  .fractionalWidth(1))
                     let group = NSCollectionLayoutGroup.vertical(layoutSize: layoutSize, subitems: [item])
                     let section = NSCollectionLayoutSection(group: group)
                     return section
@@ -49,13 +59,18 @@ class HomeCollectionViewController: UICollectionViewController {
                 return section
             case .body:
                 let item: NSCollectionLayoutItem = {
-                    let layoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1/2), heightDimension: .fractionalWidth(1/4))
-                    let item = NSCollectionLayoutItem(layoutSize: layoutSize)
+                    let layoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1/2), heightDimension: .fractionalWidth(1))
+                    let item: NSCollectionLayoutItem = {
+                        let item = NSCollectionLayoutItem(layoutSize: layoutSize)
+                        let padding = CGFloat(10)
+                        item.contentInsets = NSDirectionalEdgeInsets(top: padding, leading: padding, bottom: padding, trailing: padding)
+                        return item
+                    }()
                     return item
                 }()
                 
                 let section: NSCollectionLayoutSection = {
-                    let layoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(1/4))
+                    let layoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(1))
                     let group = NSCollectionLayoutGroup.horizontal(layoutSize: layoutSize, subitems: [item])
                     let section = NSCollectionLayoutSection(group: group)
                     return section
