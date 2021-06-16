@@ -92,6 +92,12 @@ class SearchTableViewController: UITableViewController{
         cell.item = item
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let item = fetchedList[indexPath.row]
+        let vc = DetailViewController(item: item)
+        navigationController?.pushViewController(vc, animated: true)
+    }
 
 
 }

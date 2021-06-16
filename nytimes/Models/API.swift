@@ -110,6 +110,9 @@ struct ArticleResponse {
     let web_url: String
     let headline: Headline
     let multimedia: [Multimedia]
+    var webUrl: URL? {
+        return URL(string: self.web_url)
+    }
     var imageUrl: String? {
         guard let pickedIdx = multimedia.firstIndex(where: {media in   media.subType == "xlarge" } ) else { return nil }
         let picked = multimedia[pickedIdx]
