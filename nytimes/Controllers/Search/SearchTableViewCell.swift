@@ -17,10 +17,40 @@ class SearchTableViewCell: UITableViewCell {
 //        super.setSelected(selected, animated: animated)
 //    }
     
+    var item: ArticleResponse? {
+        didSet {
+            title.text = item?.headline.main
+        }
+    }
+    
+    let title: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    lazy var vStack: UIStackView = {
+        var stack = UIStackView(arrangedSubviews: [self.title])
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.axis = .horizontal
+        return stack
+    }()
+    
     static let reuseIdentifier = "SEARCH_TABLE_VIEW_CELL_ID"
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.backgroundColor = .blue
+        
+        // styles
+        contentView.backgroundColor = .white
+        
+        // for stack
+        contentView.addSubview(vStack)
+        NSLayoutConstraint.activate([
+            vStack.topAnchor.constraint(equalTo: topAnchor),
+            vStack.bottomAnchor.constraint(equalTo: bottomAnchor),
+            vStack.leadingAnchor.constraint(equalTo: leadingAnchor),
+            vStack.trailingAnchor.constraint(equalTo: trailingAnchor),
+        ])
     }
     
     required init?(coder: NSCoder) {

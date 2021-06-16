@@ -34,7 +34,6 @@ class SearchTableViewController: UITableViewController{
         
         // for list
         tableView.register(SearchTableViewCell.self, forCellReuseIdentifier: SearchTableViewCell.reuseIdentifier)
-//        search()
         
         // for searcher
         navigationItem.searchController = searchController
@@ -72,7 +71,6 @@ class SearchTableViewController: UITableViewController{
             }
             DispatchQueue.main.async {
                 self.updateUIView()
-//                self.fetchedList.append(contentsOf: [self.response!])
                 self.fetchedList = self.response?.response.docs ?? []
                 self.tableView.reloadData()
                 self.refreshControl?.endRefreshing()
@@ -90,7 +88,9 @@ class SearchTableViewController: UITableViewController{
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.reuseIdentifier, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.reuseIdentifier, for: indexPath) as! SearchTableViewCell
+        let item = fetchedList[indexPath.row]
+        cell.item = item
         return cell
     }
 
