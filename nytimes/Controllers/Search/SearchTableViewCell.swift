@@ -26,6 +26,8 @@ class SearchTableViewCell: UITableViewCell {
     let title: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.lineBreakMode = .byWordWrapping
+        label.numberOfLines = 3
         return label
     }()
     
@@ -33,6 +35,9 @@ class SearchTableViewCell: UITableViewCell {
         var stack = UIStackView(arrangedSubviews: [self.title])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .horizontal
+        
+//        stack.layoutMargins = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+//        stack.isLayoutMarginsRelativeArrangement = true
         return stack
     }()
     

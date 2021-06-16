@@ -32,7 +32,7 @@ class SearchTableViewController: UITableViewController{
         // for styles
         tableView.backgroundColor = .white
         
-        // for list
+        // for table-view
         tableView.register(SearchTableViewCell.self, forCellReuseIdentifier: SearchTableViewCell.reuseIdentifier)
         
         // for searcher
@@ -78,7 +78,6 @@ class SearchTableViewController: UITableViewController{
         }
     }
 
-    // MARK: UICollectionViewDataSource
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
