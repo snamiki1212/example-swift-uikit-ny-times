@@ -83,8 +83,6 @@ class SearchTableViewController: UITableViewController{
         let vc = DetailViewController(item: item)
         navigationController?.pushViewController(vc, animated: true)
     }
-
-
 }
 
 extension SearchTableViewController: UISearchBarDelegate {

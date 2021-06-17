@@ -23,11 +23,14 @@ class HomeCollectionViewController: UICollectionViewController {
         
         // configures
         collectionView.collectionViewLayout = createLayout()
-        collectionView.register(HomeTopCollectionViewCell.self, forCellWithReuseIdentifier: HomeTopCollectionViewCell.reuseIdentifier)
+        collectionView.register(
+            HomeTopCollectionViewCell.self,
+            forCellWithReuseIdentifier: HomeTopCollectionViewCell.reuseIdentifier
+        )
         configureDataSource()
      
         // async processes
-        fetchRemote()
+        fetch()
     }
     
     private func createLayout() -> UICollectionViewCompositionalLayout {
@@ -81,14 +84,16 @@ class HomeCollectionViewController: UICollectionViewController {
         return layout
     }
     
-    private func fetchRemote (){
+    private func fetch (){
         SearchRequest().fetch { result in
-            switch result {
-            case .success(let res):
-                self.response = res
-            case .failure:
-                self.response = nil
-            }
+            self.response = {
+                switch result {
+                case .success(let res):
+                    return res
+                case .failure:
+                    return nil
+                }
+            }()
             DispatchQueue.main.async {
                 self.configureDataSource()
             }
@@ -113,28 +118,33 @@ class HomeCollectionViewController: UICollectionViewController {
             }
         })
         
-        let snapshot: NSDiffableDataSourceSnapshot<HomeSection, HomeItem> = {
-            var ss = NSDiffableDataSourceSnapshot<HomeSection, HomeItem>()
-            
-            guard let exampleList = self.response?.response.docs else { return ss }
-            let headerList = [exampleList[0]]
-            let bodyList = Array(exampleList[1...])
-            
-            let list: [(HomeSection, Array<HomeItem>)] = [
-                (HomeSection.header, headerList),
-                (HomeSection.body, bodyList),
-            ]
-            
-            for (section, items) in list {
-                ss.appendSections([section])
-                ss.appendItems(items, toSection: section)
-            }
-            
-            return ss
-        }()
-        
+        let snapshot = createSnapshot()
+
         sections = snapshot.sectionIdentifiers
         dataSource.apply(snapshot)
+    }
+    
+    private func createSnapshot() -> NSDiffableDataSourceSnapshot<HomeSection, HomeItem>{
+        var ss = NSDiffableDataSourceSnapshot<HomeSection, HomeItem>()
+        
+        guard let fetchedList = self.response?.response.docs else { return ss }
+        let list = createSectionItemSetList(list: fetchedList)
+        for (section, items) in list {
+            ss.appendSections([section])
+            ss.appendItems(items, toSection: section)
+        }
+        return ss
+    }
+    
+    private func createSectionItemSetList(list: [HomeItem]) -> [(HomeSection, Array<HomeItem>)] {
+        let headerList = [list[0]]
+        let bodyList = Array(list[1...])
+        
+        let set = [
+            (HomeSection.header, headerList),
+            (HomeSection.body, bodyList),
+        ]
+        return set
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
