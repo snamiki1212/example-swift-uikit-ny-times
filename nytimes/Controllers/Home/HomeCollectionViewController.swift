@@ -42,46 +42,54 @@ class HomeCollectionViewController: UICollectionViewController {
             let section = self.sections[sectionIndex]
             switch section {
             case .header:
-                let item: NSCollectionLayoutItem = {
-                    let layoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(1))
-                    let item: NSCollectionLayoutItem = {
-                        let item = NSCollectionLayoutItem(layoutSize: layoutSize)
-                        let padding = CGFloat(10)
-                        item.contentInsets = NSDirectionalEdgeInsets(top: padding, leading: padding, bottom: padding, trailing: padding)
-                        return item
-                    }()
-                    return item
-                }()
-                
-                let section: NSCollectionLayoutSection = {
-                    let layoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension:  .fractionalWidth(1))
-                    let group = NSCollectionLayoutGroup.vertical(layoutSize: layoutSize, subitems: [item])
-                    let section = NSCollectionLayoutSection(group: group)
-                    return section
-                }()
-                return section
+                return self.createHeaderSectionLayout()
             case .body:
-                let item: NSCollectionLayoutItem = {
-                    let layoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1/2), heightDimension: .fractionalWidth(1))
-                    let item: NSCollectionLayoutItem = {
-                        let item = NSCollectionLayoutItem(layoutSize: layoutSize)
-                        let padding = CGFloat(10)
-                        item.contentInsets = NSDirectionalEdgeInsets(top: padding, leading: padding, bottom: padding, trailing: padding)
-                        return item
-                    }()
-                    return item
-                }()
-                
-                let section: NSCollectionLayoutSection = {
-                    let layoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(1))
-                    let group = NSCollectionLayoutGroup.horizontal(layoutSize: layoutSize, subitems: [item])
-                    let section = NSCollectionLayoutSection(group: group)
-                    return section
-                }()
-                return section
+                return self.createBodySectionLayout()
             }
         }
         return layout
+    }
+    
+    private func createHeaderSectionLayout() -> NSCollectionLayoutSection {
+        let item: NSCollectionLayoutItem = {
+            let layoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(1))
+            let item: NSCollectionLayoutItem = {
+                let item = NSCollectionLayoutItem(layoutSize: layoutSize)
+                let padding = CGFloat(10)
+                item.contentInsets = NSDirectionalEdgeInsets(top: padding, leading: padding, bottom: padding, trailing: padding)
+                return item
+            }()
+            return item
+        }()
+        
+        let section: NSCollectionLayoutSection = {
+            let layoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension:  .fractionalWidth(1))
+            let group = NSCollectionLayoutGroup.vertical(layoutSize: layoutSize, subitems: [item])
+            let section = NSCollectionLayoutSection(group: group)
+            return section
+        }()
+        return section
+    }
+    
+    private func createBodySectionLayout() -> NSCollectionLayoutSection {
+        let item: NSCollectionLayoutItem = {
+            let layoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1/2), heightDimension: .fractionalWidth(1))
+            let item: NSCollectionLayoutItem = {
+                let item = NSCollectionLayoutItem(layoutSize: layoutSize)
+                let padding = CGFloat(10)
+                item.contentInsets = NSDirectionalEdgeInsets(top: padding, leading: padding, bottom: padding, trailing: padding)
+                return item
+            }()
+            return item
+        }()
+        
+        let section: NSCollectionLayoutSection = {
+            let layoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(1))
+            let group = NSCollectionLayoutGroup.horizontal(layoutSize: layoutSize, subitems: [item])
+            let section = NSCollectionLayoutSection(group: group)
+            return section
+        }()
+        return section
     }
     
     private func fetch (){
