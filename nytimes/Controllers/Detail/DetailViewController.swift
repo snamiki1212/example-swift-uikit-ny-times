@@ -10,7 +10,7 @@ import SafariServices
 
 class DetailViewController: UIViewController {
 
-    var item: ArticleResponse
+    var item: Article
     
     lazy var shareButton: UIBarButtonItem = {
         let img = UIImage(systemName: "square.and.arrow.up")
@@ -79,7 +79,7 @@ class DetailViewController: UIViewController {
         navigationItem.rightBarButtonItem = shareButton
     }
     
-    init(item: ArticleResponse) {
+    init(item: Article) {
         self.item = item
         super.init(nibName: nil, bundle: nil)
     }

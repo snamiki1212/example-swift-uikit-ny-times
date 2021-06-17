@@ -9,7 +9,7 @@ import UIKit
 
 class HomeTopCollectionViewCell: UICollectionViewCell {
     static let reuseIdentifier = "HOME_TOP_COLLECTION_VIEW_CELL"
-    var item: ArticleResponse? {
+    var item: Article? {
         didSet {
             if let item = item {
                 titleLabel.text = item.headline.main

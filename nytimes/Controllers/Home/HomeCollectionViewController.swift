@@ -7,7 +7,7 @@
 
 import UIKit
 
-typealias Response = SearchEntireResponse
+typealias Response = SearchResponse
 
 class HomeCollectionViewController: UICollectionViewController {
     
@@ -82,7 +82,7 @@ class HomeCollectionViewController: UICollectionViewController {
     }
     
     private func fetchRemote (){
-        ArticleSearchRequest().send { result in
+        SearchRequest().send { result in
             switch result {
             case .success(let res):
                 self.response = res

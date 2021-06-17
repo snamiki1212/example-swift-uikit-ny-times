@@ -17,7 +17,7 @@ class SearchTableViewCell: UITableViewCell {
 //        super.setSelected(selected, animated: animated)
 //    }
     
-    var item: ArticleResponse? {
+    var item: Article? {
         didSet {
             title.text = item?.headline.main
         }

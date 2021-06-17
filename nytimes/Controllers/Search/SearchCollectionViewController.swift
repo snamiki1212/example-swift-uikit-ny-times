@@ -24,7 +24,7 @@ class SearchTableViewController: UITableViewController{
         }
     }
     
-    private var fetchedList = [ArticleResponse]()
+    private var fetchedList = [Article]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,7 +62,7 @@ class SearchTableViewController: UITableViewController{
         }
         // TODO: fetch with searchText
         print(searchText)
-        ArticleSearchRequest().send { result in
+        SearchRequest().send { result in
             switch result {
             case .success(let res):
                 self.response = res
