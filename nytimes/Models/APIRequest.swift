@@ -12,15 +12,12 @@ import UIKit
 protocol APIBaseRequest {
     associatedtype Response
     var path: String { get }
-    var queryItems: [URLQueryItem]? { get }
-    var request: URLRequest { get }
     var postData: Data? { get }
     var scheme: String { get }
     var host: String { get }
 }
 
 extension APIBaseRequest {
-    var queryItems: [URLQueryItem]? { nil }
     var postData: Data? { nil }
 }
 
@@ -30,15 +27,17 @@ extension APIBaseRequest {
 }
 
 extension APIBaseRequest {
-    var request: URLRequest {
-        let components: URLComponents = {
-            var components = URLComponents()
-            components.scheme = scheme
-            components.host = host
-            components.path = path
-            components.queryItems = queryItems
-            return components
-        }()
+    private func createURLComponents(queryItems: [URLQueryItem]) -> URLComponents {
+        var components = URLComponents()
+        components.scheme = scheme
+        components.host = host
+        components.path = path
+        components.queryItems = queryItems
+        return components
+    }
+    
+    private func createRequest(queryItems: [URLQueryItem]) -> URLRequest {
+        let components = createURLComponents(queryItems: queryItems)
         let request: URLRequest = {
             var req = URLRequest(url: components.url!)
             if let data = postData {
@@ -50,11 +49,12 @@ extension APIBaseRequest {
         }()
         return request
     }
+    
 }
 
 extension APIBaseRequest where Response: Decodable {
-    func send(completion: @escaping (Result<Response, Error>) -> Void) {
-        print("SEND")
+    func send(queryItems: [URLQueryItem], completion: @escaping (Result<Response, Error>) -> Void) {
+        let request = createRequest(queryItems: queryItems)
         URLSession.shared.dataTask(with: request) { data, response, error in
             do {
                 if let data = data {

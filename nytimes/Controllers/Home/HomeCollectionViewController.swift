@@ -82,7 +82,7 @@ class HomeCollectionViewController: UICollectionViewController {
     }
     
     private func fetchRemote (){
-        SearchRequest().send { result in
+        SearchRequest().fetch { result in
             switch result {
             case .success(let res):
                 self.response = res

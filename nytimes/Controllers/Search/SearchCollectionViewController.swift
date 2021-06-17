@@ -60,9 +60,8 @@ class SearchTableViewController: UITableViewController{
             refreshControl?.endRefreshing()
             return
         }
-        // TODO: fetch with searchText
-        print(searchText)
-        SearchRequest().send { result in
+        
+        SearchRequest().search(searchText: searchText) { result in
             switch result {
             case .success(let res):
                 self.response = res
@@ -76,6 +75,7 @@ class SearchTableViewController: UITableViewController{
                 self.refreshControl?.endRefreshing()
             }
         }
+        
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
