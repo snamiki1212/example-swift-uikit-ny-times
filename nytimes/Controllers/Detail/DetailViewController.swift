@@ -10,48 +10,56 @@ import SafariServices
 
 class DetailViewController: UIViewController {
 
-    var item: ArticleResponse {
-        didSet {
-            titleLable.text = item.headline.main
-        }
-    }
+    var item: ArticleResponse
+    
     
     let titleLable: UILabel = {
         let label = UILabel()
         label.text = "OK"
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.backgroundColor = .red
+        label.numberOfLines = 3
+        label.lineBreakMode = .byWordWrapping
         return label
     }()
     
     let link: UIButton = {
-        let btn = UIButton()
+        let btn = UIButton(frame: CGRect(x: 0, y: 0, width: 200, height: 100))
         btn.setTitle("Goto Page", for: .normal)
         btn.addTarget(self, action: #selector(onClickLinkButton), for: .touchUpInside)
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.backgroundColor = .blue
         return btn
     }()
     
     lazy var vStack: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [titleLable, link])
         stack.axis = .vertical
-        stack.distribution = .equalSpacing
+        stack.distribution = .equalCentering
         stack.alignment = .center
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
     
+    func updateUI(){
+        titleLable.text = item.headline.main
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        updateUI()
+
         // styles
         view.backgroundColor = .white
         
         // for views
         view.addSubview(vStack)
+        let safeArea = self.view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
-            vStack.topAnchor.constraint(equalTo: view.topAnchor),
-            vStack.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            vStack.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            vStack.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            vStack.topAnchor.constraint(equalTo: safeArea.topAnchor),
+            vStack.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
+            vStack.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
+            vStack.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
         ])
     }
     

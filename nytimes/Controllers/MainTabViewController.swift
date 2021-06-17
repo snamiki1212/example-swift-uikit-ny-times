@@ -26,7 +26,7 @@ class MainTabViewController: UITabBarController {
             let layout = UICollectionViewLayout()
             let vc = SearchTableViewController()
             let image = UIImage(systemName: "magnifyingglass")
-            vc.tabBarItem =  UITabBarItem(title: "Search", image: image, tag: 2)
+            vc.tabBarItem = UITabBarItem(title: "Search", image: image, tag: 2)
             return vc
         }()
         let nav = UINavigationController(rootViewController: vc)
