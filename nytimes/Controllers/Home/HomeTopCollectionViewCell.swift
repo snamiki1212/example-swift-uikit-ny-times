@@ -43,6 +43,7 @@ class HomeTopCollectionViewCell: UICollectionViewCell {
         let stack = UIStackView(arrangedSubviews: list)
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
+        stack.alignment = .top
         return stack
     }()
     

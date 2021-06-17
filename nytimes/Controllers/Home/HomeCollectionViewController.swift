@@ -14,6 +14,12 @@ class HomeCollectionViewController: UICollectionViewController {
     var dataSource: DataSource!
     var sections = [HomeSection]()
     var response: Response?
+    
+    enum SupplementaryViewKind {
+        // static let header = "header"
+        static let topLine = "topLine"
+        // static let bottomLine = "bottomLine"
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +33,7 @@ class HomeCollectionViewController: UICollectionViewController {
             HomeTopCollectionViewCell.self,
             forCellWithReuseIdentifier: HomeTopCollectionViewCell.reuseIdentifier
         )
+        collectionView.register(SectionHeaderView.self, forSupplementaryViewOfKind: SupplementaryViewKind.topLine, withReuseIdentifier: SectionHeaderView.reuseIdentifier)
         configureDataSource()
      
         // async processes
@@ -51,36 +58,59 @@ extension HomeCollectionViewController {
             let section = self.sections[sectionIndex]
             switch section {
             case .header:
-                return self.createHeaderSectionLayout()
+                return self.createTopLayout()
             case .body:
-                return self.createBodySectionLayout()
+                return self.createBodyLayout()
             }
         }
         return layout
     }
     
-    private func createHeaderSectionLayout() -> NSCollectionLayoutSection {
+    private func createTopLayout() -> NSCollectionLayoutSection {
         let item: NSCollectionLayoutItem = {
-            let layoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(1))
-            let item: NSCollectionLayoutItem = {
-                let item = NSCollectionLayoutItem(layoutSize: layoutSize)
-                let padding = CGFloat(10)
-                item.contentInsets = NSDirectionalEdgeInsets(top: padding, leading: padding, bottom: padding, trailing: padding)
-                return item
-            }()
+            let layoutSize = NSCollectionLayoutSize(
+                widthDimension: .fractionalWidth(1),
+                heightDimension: .fractionalWidth(1)
+            )
+            let item = NSCollectionLayoutItem(layoutSize: layoutSize)
+            let padding = CGFloat(10)
+            item.contentInsets = NSDirectionalEdgeInsets(
+                top: padding,
+                leading: padding,
+                bottom: padding,
+                trailing: padding
+            )
             return item
         }()
         
+        let supplementaryItems: [NSCollectionLayoutBoundarySupplementaryItem] = {
+            let lineItemSize = NSCollectionLayoutSize(
+                widthDimension: .fractionalWidth(1),
+                heightDimension: .absolute(40)
+            )
+            let topLineItem = NSCollectionLayoutBoundarySupplementaryItem(
+                layoutSize: lineItemSize,
+                elementKind: SupplementaryViewKind.topLine,
+                alignment: .top
+            )
+            return [topLineItem]
+        }()
+        
         let section: NSCollectionLayoutSection = {
-            let layoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension:  .fractionalWidth(1))
+            let layoutSize = NSCollectionLayoutSize(
+                widthDimension: .fractionalWidth(1),
+                heightDimension:  .absolute(450)
+            )
             let group = NSCollectionLayoutGroup.vertical(layoutSize: layoutSize, subitems: [item])
             let section = NSCollectionLayoutSection(group: group)
+            section.boundarySupplementaryItems = supplementaryItems
             return section
         }()
+        
         return section
     }
     
-    private func createBodySectionLayout() -> NSCollectionLayoutSection {
+    private func createBodyLayout() -> NSCollectionLayoutSection {
         let item: NSCollectionLayoutItem = {
             let layoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1/2), heightDimension: .fractionalWidth(1))
             let item: NSCollectionLayoutItem = {
@@ -148,6 +178,17 @@ extension HomeCollectionViewController {
             
             }
         })
+        
+        dataSource.supplementaryViewProvider = { collectionView, kind, indexPath -> UICollectionReusableView? in
+            switch kind {
+            case SupplementaryViewKind.topLine:
+                let sv = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeaderView.reuseIdentifier, for: indexPath) as! SectionHeaderView
+                sv.setTitle("News")
+                return sv
+            default:
+              return nil
+            }
+          }
         
         return dataSource
     }
