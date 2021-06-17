@@ -12,6 +12,11 @@ class DetailViewController: UIViewController {
 
     var item: ArticleResponse
     
+    lazy var shareButton: UIBarButtonItem = {
+        let img = UIImage(systemName: "square.and.arrow.up")
+        let btn = UIBarButtonItem(image: img, style: .plain, target: self, action: #selector(onClickShareButton))
+        return btn
+    }()
     
     let titleLable: UILabel = {
         let label = UILabel()
@@ -61,6 +66,9 @@ class DetailViewController: UIViewController {
             vStack.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
             vStack.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
         ])
+        
+        // for nav
+        navigationItem.rightBarButtonItem = shareButton
     }
     
     init(item: ArticleResponse) {
@@ -77,4 +85,9 @@ class DetailViewController: UIViewController {
         present(vc, animated: true, completion: nil)
     }
 
+    @objc func onClickShareButton (){
+        let items = [item.webUrl]
+        let ac = UIActivityViewController(activityItems: items as [Any], applicationActivities: nil)
+        present(ac, animated: true, completion: nil)
+    }
 }
