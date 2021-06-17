@@ -33,6 +33,15 @@ class HomeCollectionViewController: UICollectionViewController {
         fetch()
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
+        let vc = DetailViewController(item: item)
+        navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+
+extension HomeCollectionViewController {
     private func createLayout() -> UICollectionViewCompositionalLayout {
         let layout = UICollectionViewCompositionalLayout { sectionIndex, layoutEnv -> NSCollectionLayoutSection in
             
@@ -91,7 +100,9 @@ class HomeCollectionViewController: UICollectionViewController {
         }()
         return section
     }
-    
+}
+
+extension HomeCollectionViewController {
     private func fetch (){
         SearchRequest().fetch { result in
             self.response = {
@@ -107,7 +118,9 @@ class HomeCollectionViewController: UICollectionViewController {
             }
         }
     }
-    
+}
+
+extension HomeCollectionViewController {
     private func configureDataSource(){
         // for sections
         let snapshot = createSnapshot()
@@ -160,11 +173,5 @@ class HomeCollectionViewController: UICollectionViewController {
             (HomeSection.body, bodyList),
         ]
         return set
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
-        let vc = DetailViewController(item: item)
-        navigationController?.pushViewController(vc, animated: true)
     }
 }
