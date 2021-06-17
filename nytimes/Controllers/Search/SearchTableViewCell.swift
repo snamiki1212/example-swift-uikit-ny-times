@@ -36,8 +36,10 @@ class SearchTableViewCell: UITableViewCell {
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .horizontal
         
-//        stack.layoutMargins = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
-//        stack.isLayoutMarginsRelativeArrangement = true
+        // layout
+        stack.layoutMargins = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+        stack.isLayoutMarginsRelativeArrangement = true
+        
         return stack
     }()
     

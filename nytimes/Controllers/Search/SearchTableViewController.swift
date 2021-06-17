@@ -31,6 +31,7 @@ class SearchTableViewController: UITableViewController{
         
         // for styles
         tableView.backgroundColor = .white
+        tableView.rowHeight = 60
         
         // for table-view
         tableView.register(SearchTableViewCell.self, forCellReuseIdentifier: SearchTableViewCell.reuseIdentifier)
@@ -90,6 +91,7 @@ class SearchTableViewController: UITableViewController{
         let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.reuseIdentifier, for: indexPath) as! SearchTableViewCell
         let item = fetchedList[indexPath.row]
         cell.item = item
+        
         return cell
     }
     
