@@ -10,8 +10,8 @@ import UIKit
 typealias Response = SearchResponse
 
 class HomeCollectionViewController: UICollectionViewController {
-    
-    var dataSource: UICollectionViewDiffableDataSource<HomeSection, HomeItem>!
+    typealias DataSource = UICollectionViewDiffableDataSource<HomeSection, HomeItem>
+    var dataSource: DataSource!
     var sections = [HomeSection]()
     var response: Response?
 
@@ -101,7 +101,17 @@ class HomeCollectionViewController: UICollectionViewController {
     }
     
     private func configureDataSource(){
-        dataSource = .init(collectionView: collectionView, cellProvider: { collectionView, indexPath, item in
+        // for sections
+        let snapshot = createSnapshot()
+        sections = snapshot.sectionIdentifiers
+        
+        // for dataSource
+        dataSource = createDataSource()
+        dataSource.apply(snapshot)
+    }
+    
+    private func createDataSource () -> DataSource{
+        let dataSource = DataSource.init(collectionView: collectionView, cellProvider: { collectionView, indexPath, item in
             
             let section = self.sections[indexPath.section]
             switch section {
@@ -118,10 +128,7 @@ class HomeCollectionViewController: UICollectionViewController {
             }
         })
         
-        let snapshot = createSnapshot()
-
-        sections = snapshot.sectionIdentifiers
-        dataSource.apply(snapshot)
+        return dataSource
     }
     
     private func createSnapshot() -> NSDiffableDataSourceSnapshot<HomeSection, HomeItem>{
