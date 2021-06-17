@@ -136,4 +136,10 @@ class HomeCollectionViewController: UICollectionViewController {
         sections = snapshot.sectionIdentifiers
         dataSource.apply(snapshot)
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
+        let vc = DetailViewController(item: item)
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }

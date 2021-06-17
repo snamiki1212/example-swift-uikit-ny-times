@@ -20,7 +20,6 @@ class DetailViewController: UIViewController {
     
     let titleLable: UILabel = {
         let label = UILabel()
-        label.text = "OK"
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .red
         label.numberOfLines = 3
