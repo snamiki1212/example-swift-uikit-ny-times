@@ -67,17 +67,19 @@ extension HomeCollectionViewController {
     }
     
     private func createTopLayout() -> NSCollectionLayoutSection {
+        let height = NSCollectionLayoutDimension.absolute(210)
+        
         let item: NSCollectionLayoutItem = {
             let layoutSize = NSCollectionLayoutSize(
                 widthDimension: .fractionalWidth(1),
-                heightDimension: .fractionalWidth(1)
+                heightDimension: height
             )
             let item = NSCollectionLayoutItem(layoutSize: layoutSize)
             let padding = CGFloat(10)
             item.contentInsets = NSDirectionalEdgeInsets(
-                top: padding,
+                top: 0,
                 leading: padding,
-                bottom: padding,
+                bottom: 0,
                 trailing: padding
             )
             return item
@@ -93,13 +95,15 @@ extension HomeCollectionViewController {
                 elementKind: SupplementaryViewKind.topLine,
                 alignment: .top
             )
+            topLineItem.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10)
+                
             return [topLineItem]
         }()
         
         let section: NSCollectionLayoutSection = {
             let layoutSize = NSCollectionLayoutSize(
                 widthDimension: .fractionalWidth(1),
-                heightDimension:  .absolute(450)
+                heightDimension: height
             )
             let group = NSCollectionLayoutGroup.vertical(layoutSize: layoutSize, subitems: [item])
             let section = NSCollectionLayoutSection(group: group)
