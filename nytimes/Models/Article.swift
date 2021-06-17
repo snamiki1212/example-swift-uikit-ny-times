@@ -14,6 +14,7 @@ struct Article: Codable {
     // TODO: add alot of proparties
     let _id: String
     let web_url: String
+    let snippet: String
     let headline: Headline
     let multimedia: [Multimedia]
     var webUrl: URL? {

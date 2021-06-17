@@ -42,8 +42,16 @@ class DetailViewController: UIViewController {
         return iv
     }()
     
+    let snippet: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 3
+        label.lineBreakMode = .byWordWrapping
+        return label
+    }()
+    
     lazy var vStack: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [titleLable, thumbnail, link])
+        let list = [titleLable, thumbnail, snippet, link]
+        let stack = UIStackView(arrangedSubviews: list)
         stack.axis = .vertical
         stack.distribution = .equalCentering
         stack.alignment = .center
@@ -56,6 +64,7 @@ class DetailViewController: UIViewController {
         if let url = item.imageUrl {
             thumbnail.load(url: url)
         }
+        snippet.text = item.snippet
     }
     
     override func viewDidLoad() {
