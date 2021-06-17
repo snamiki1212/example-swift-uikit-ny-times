@@ -113,11 +113,12 @@ struct ArticleResponse {
     var webUrl: URL? {
         return URL(string: self.web_url)
     }
-    var imageUrl: String? {
+    var imageUrl: URL? {
         guard let pickedIdx = multimedia.firstIndex(where: {media in   media.subType == "xlarge" } ) else { return nil }
         let picked = multimedia[pickedIdx]
         
-        return ArticleResponse.multimediaPrefixUrl + picked.url
+        let strUrl = ArticleResponse.multimediaPrefixUrl + picked.url
+        return URL(string: strUrl)
     }
     static let multimediaPrefixUrl = "https://static01.nyt.com/"
 }

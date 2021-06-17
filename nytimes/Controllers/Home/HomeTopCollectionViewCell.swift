@@ -11,14 +11,13 @@ class HomeTopCollectionViewCell: UICollectionViewCell {
     static let reuseIdentifier = "HOME_TOP_COLLECTION_VIEW_CELL"
     var item: ArticleResponse? {
         didSet {
-            // for label
-            guard let item = item else { return }
-            titleLabel.text = item.headline.main
+            if let item = item {
+                titleLabel.text = item.headline.main
+            }
             
-            // for img
-            guard let urlString = item.imageUrl else { return }
-            let url = URL(string: urlString)!
-            self.thumbnail.load(url: url)
+            if let url = item?.imageUrl {
+                self.thumbnail.load(url: url)
+            }
         }
     }
     
