@@ -37,8 +37,14 @@ class DetailViewController: UIViewController {
         return btn
     }()
     
+    let thumbnail: UIImageView = {
+        let iv = UIImageView(image: nil)
+        iv.contentMode = .scaleAspectFit
+        return iv
+    }()
+    
     lazy var vStack: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [titleLable, link])
+        let stack = UIStackView(arrangedSubviews: [titleLable, thumbnail, link])
         stack.axis = .vertical
         stack.distribution = .equalCentering
         stack.alignment = .center
@@ -48,6 +54,9 @@ class DetailViewController: UIViewController {
     
     func updateUI(){
         titleLable.text = item.headline.main
+        if let url = item.imageUrl {
+            thumbnail.load(url: url)
+        }
     }
     
     override func viewDidLoad() {
