@@ -41,28 +41,6 @@ class SearchTableViewController: UITableViewController{
         tableView.refreshControl = UIRefreshControl()
     }
     
-    func search (){
-        guard let searchText = self.searchText else {
-            refreshControl?.endRefreshing()
-            return
-        }
-        
-        SearchRequest().search(searchText: searchText) { result in
-            self.fetchedList = {
-                switch result {
-                case .success(let res):
-                    return res.response.docs
-                case .failure:
-                    return []
-                }
-            }()
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-                self.refreshControl?.endRefreshing()
-            }
-        }
-    }
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -82,6 +60,30 @@ class SearchTableViewController: UITableViewController{
         let item = fetchedList[indexPath.row]
         let vc = DetailViewController(item: item)
         navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+extension SearchTableViewController {
+    private func search (){
+        guard let searchText = self.searchText else {
+            refreshControl?.endRefreshing()
+            return
+        }
+        
+        SearchRequest().search(searchText: searchText) { result in
+            self.fetchedList = {
+                switch result {
+                case .success(let res):
+                    return res.response.docs
+                case .failure:
+                    return []
+                }
+            }()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                self.refreshControl?.endRefreshing()
+            }
+        }
     }
 }
 
