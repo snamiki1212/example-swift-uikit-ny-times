@@ -22,7 +22,7 @@ extension APIBaseRequest {
 }
 
 extension APIBaseRequest {
-    var scheme: String { "https"}
+    var scheme: String { "https" }
     var host: String { "api.nytimes.com" }
 }
 

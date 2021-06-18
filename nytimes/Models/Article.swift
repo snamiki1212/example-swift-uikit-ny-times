@@ -11,7 +11,6 @@ struct Article: Codable {
     static let multimediaPrefixUrl = "https://static01.nyt.com/"
     // REF: https://developer.nytimes.com/docs/articlesearch-product/1/types/Article
     
-    // TODO: add alot of proparties
     let _id: String
     let web_url: String
     let snippet: String
@@ -21,7 +20,7 @@ struct Article: Codable {
         return URL(string: self.web_url)
     }
     var imageUrl: URL? {
-        guard let pickedIdx = multimedia.firstIndex(where: {media in   media.subType == "xlarge" } ) else { return nil }
+        guard let pickedIdx = multimedia.firstIndex(where: {media in media.subType == "xlarge" } ) else { return nil }
         let picked = multimedia[pickedIdx]
         
         let strUrl = Article.multimediaPrefixUrl + picked.url

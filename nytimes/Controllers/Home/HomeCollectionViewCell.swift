@@ -45,7 +45,6 @@ class HomeCollectionViewCell: UICollectionViewCell {
         stack.axis = .vertical
         stack.alignment = .center
         stack.distribution = .equalSpacing
-        stack.backgroundColor = .red // TODO:
         return stack
     }()
     
