@@ -1,11 +1,10 @@
 # OERVIEW
 
-- [ ] Integrate API: https://developer.nytimes.com/docs/articlesearch-product/1/overview
-- [ ] Collection or Table view
-- [ ] Search Functionality
-- [ ] Detail View
+NY Times News App.
 
-## INSTALLATION
+TODO: Demo Movie
+
+## Installation
 
 ```zsh
 # create secret file
@@ -15,6 +14,18 @@ $ to=nytimes/SupportFiles/Secret.swift
 $ echo "let NY_TIMES_API_KEY = \"$API_KEY\"\nlet NY_TIMES_APP_ID = \"$APP_ID\"" > $to
 $ cat $to
 ```
+
+## Features
+
+### Search Specification
+
+TODO:
+
+## Tech
+
+- Core: Swift 5.4 + UIKit
+- Packages: Not using any packages and pods
+- Architecture: MVVM
 
 ## LICENSE
 
