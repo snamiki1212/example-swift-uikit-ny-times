@@ -25,7 +25,7 @@ TODO:
 
 - Core: Swift 5.4 + UIKit
 - Packages: Not using any packages and pods
-- Architecture: MVVM
+- Architecture: MVC/MVVM
 
 ## LICENSE
 
