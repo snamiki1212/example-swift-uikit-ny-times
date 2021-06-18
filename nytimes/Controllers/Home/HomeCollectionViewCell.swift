@@ -7,8 +7,8 @@
 
 import UIKit
 
-class HomeTopCollectionViewCell: UICollectionViewCell {
-    static let reuseIdentifier = "HOME_TOP_COLLECTION_VIEW_CELL"
+class HomeCollectionViewCell: UICollectionViewCell {
+    static let reuseIdentifier = "HOME_COLLECTION_VIEW_CELL"
     var item: Article? {
         didSet {
             if let item = item {

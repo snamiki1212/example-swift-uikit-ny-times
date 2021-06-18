@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		24A428562677E54A0035DA6D /* HomeTopCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A428552677E54A0035DA6D /* HomeTopCollectionViewCell.swift */; };
+		24A428562677E54A0035DA6D /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A428552677E54A0035DA6D /* HomeCollectionViewCell.swift */; };
 		24A4285926783BC80035DA6D /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A4285826783BC80035DA6D /* UIImageView.swift */; };
 		24A4285C267917B00035DA6D /* HomeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A4285B267917B00035DA6D /* HomeItem.swift */; };
 		24A4285E267917D80035DA6D /* HomeSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A4285D267917D80035DA6D /* HomeSection.swift */; };
@@ -30,7 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		24A428552677E54A0035DA6D /* HomeTopCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTopCollectionViewCell.swift; sourceTree = "<group>"; };
+		24A428552677E54A0035DA6D /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		24A4285826783BC80035DA6D /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		24A4285B267917B00035DA6D /* HomeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeItem.swift; sourceTree = "<group>"; };
 		24A4285D267917D80035DA6D /* HomeSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSection.swift; sourceTree = "<group>"; };
@@ -69,7 +69,7 @@
 			isa = PBXGroup;
 			children = (
 				24F628C62672CA0F0036218C /* HomeCollectionViewController.swift */,
-				24A428552677E54A0035DA6D /* HomeTopCollectionViewCell.swift */,
+				24A428552677E54A0035DA6D /* HomeCollectionViewCell.swift */,
 				24A42870267BF1010035DA6D /* SectionHeaderView.swift */,
 			);
 			path = Home;
@@ -256,7 +256,7 @@
 				24F628AE2672C6CA0036218C /* AppDelegate.swift in Sources */,
 				24A42864267AA6C30035DA6D /* SearchTableViewCell.swift in Sources */,
 				24F628C72672CA0F0036218C /* HomeCollectionViewController.swift in Sources */,
-				24A428562677E54A0035DA6D /* HomeTopCollectionViewCell.swift in Sources */,
+				24A428562677E54A0035DA6D /* HomeCollectionViewCell.swift in Sources */,
 				24F628C92672CCAC0036218C /* SearchTableViewController.swift in Sources */,
 				24F628B02672C6CA0036218C /* SceneDelegate.swift in Sources */,
 				24A42867267AB6330035DA6D /* DetailViewController.swift in Sources */,

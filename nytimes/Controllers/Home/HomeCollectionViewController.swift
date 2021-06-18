@@ -30,8 +30,8 @@ class HomeCollectionViewController: UICollectionViewController {
         // configures
         collectionView.collectionViewLayout = createLayout()
         collectionView.register(
-            HomeTopCollectionViewCell.self,
-            forCellWithReuseIdentifier: HomeTopCollectionViewCell.reuseIdentifier
+            HomeCollectionViewCell.self,
+            forCellWithReuseIdentifier: HomeCollectionViewCell.reuseIdentifier
         )
         collectionView.register(SectionHeaderView.self, forSupplementaryViewOfKind: SupplementaryViewKind.topLine, withReuseIdentifier: SectionHeaderView.reuseIdentifier)
         configureDataSource()
@@ -115,19 +115,28 @@ extension HomeCollectionViewController {
     }
     
     private func createBodyLayout() -> NSCollectionLayoutSection {
+        let height = NSCollectionLayoutDimension.absolute(200)
         let item: NSCollectionLayoutItem = {
-            let layoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1/2), heightDimension: .fractionalWidth(1))
-            let item: NSCollectionLayoutItem = {
-                let item = NSCollectionLayoutItem(layoutSize: layoutSize)
-                let padding = CGFloat(10)
-                item.contentInsets = NSDirectionalEdgeInsets(top: padding, leading: padding, bottom: padding, trailing: padding)
-                return item
-            }()
+            let layoutSize = NSCollectionLayoutSize(
+                widthDimension: .fractionalWidth(1/2),
+                heightDimension: height
+            )
+            let item = NSCollectionLayoutItem(layoutSize: layoutSize)
+            let padding = CGFloat(10)
+            item.contentInsets = NSDirectionalEdgeInsets(
+                top: padding / 2,
+                leading: padding,
+                bottom: padding,
+                trailing: padding
+            )
             return item
         }()
         
         let section: NSCollectionLayoutSection = {
-            let layoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(1))
+            let layoutSize = NSCollectionLayoutSize(
+                widthDimension: .fractionalWidth(1),
+                heightDimension: height
+            )
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: layoutSize, subitems: [item])
             let section = NSCollectionLayoutSection(group: group)
             return section
@@ -171,12 +180,12 @@ extension HomeCollectionViewController {
             let section = self.sections[indexPath.section]
             switch section {
             case .header:
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeTopCollectionViewCell.reuseIdentifier, for: indexPath) as! HomeTopCollectionViewCell
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionViewCell.reuseIdentifier, for: indexPath) as! HomeCollectionViewCell
                 cell.item = item
                 return cell
             
             case .body:
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeTopCollectionViewCell.reuseIdentifier, for: indexPath) as! HomeTopCollectionViewCell
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionViewCell.reuseIdentifier, for: indexPath) as! HomeCollectionViewCell
                 cell.item = item
                 return cell
             

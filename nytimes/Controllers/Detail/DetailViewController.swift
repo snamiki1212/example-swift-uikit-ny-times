@@ -21,19 +21,27 @@ class DetailViewController: UIViewController {
     let titleLable: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = .red
         label.numberOfLines = 3
         label.lineBreakMode = .byWordWrapping
         return label
     }()
     
-    let link: UIButton = {
-        let btn = UIButton(frame: CGRect(x: 0, y: 0, width: 200, height: 100))
-        btn.setTitle("Goto Page", for: .normal)
-        btn.addTarget(self, action: #selector(onClickLinkButton), for: .touchUpInside)
-        btn.translatesAutoresizingMaskIntoConstraints = false
-        btn.backgroundColor = .blue
-        return btn
+    lazy var link: UILabel = {
+        let ui = UILabel()
+        ui.text = " Goto Page "
+        ui.translatesAutoresizingMaskIntoConstraints = false
+        
+        // for onClick
+        let onTap = UITapGestureRecognizer(target: self, action: #selector(onClickLinkButton))
+        ui.isUserInteractionEnabled = true
+        ui.addGestureRecognizer(onTap)
+
+        // for corner radius
+        ui.layer.cornerRadius = 5
+        ui.layer.borderWidth = 1
+        ui.layer.borderColor = UIColor.blue.cgColor
+        
+        return ui
     }()
     
     let thumbnail: UIImageView = {
@@ -78,10 +86,10 @@ class DetailViewController: UIViewController {
         view.addSubview(vStack)
         let safeArea = self.view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
-            vStack.topAnchor.constraint(equalTo: safeArea.topAnchor),
-            vStack.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
-            vStack.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
-            vStack.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
+            vStack.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 20),
+            vStack.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -20),
+            vStack.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 20),
+            vStack.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -20),
         ])
         
         // for nav
