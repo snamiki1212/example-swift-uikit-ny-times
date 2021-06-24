@@ -16,16 +16,23 @@ class HomeCollectionViewController: UICollectionViewController {
     var response: Response?
     
     enum SupplementaryViewKind {
-        // static let header = "header"
         static let topLine = "topLine"
-        // static let bottomLine = "bottomLine"
     }
-
+    
+    var leftBarItem:UIBarButtonItem = {
+        let label = UILabel()
+        label.text = "NY Times"
+        label.font = UIFont.boldSystemFont(ofSize: 20)
+        let item = UIBarButtonItem(customView: label)
+        return item
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // styles
         collectionView.backgroundColor = .white
+        self.navigationItem.leftBarButtonItem = leftBarItem
         
         // configures
         collectionView.collectionViewLayout = createLayout()
@@ -52,9 +59,6 @@ extension HomeCollectionViewController {
     private func createLayout() -> UICollectionViewCompositionalLayout {
         let layout = UICollectionViewCompositionalLayout { sectionIndex, layoutEnv -> NSCollectionLayoutSection in
             
-            // styles
-            // TODO: alot...
-            
             let section = self.sections[sectionIndex]
             switch section {
             case .header:
@@ -67,7 +71,8 @@ extension HomeCollectionViewController {
     }
     
     private func createTopLayout() -> NSCollectionLayoutSection {
-        let height = NSCollectionLayoutDimension.absolute(210)
+        let height = NSCollectionLayoutDimension.absolute(240)
+        let padding = CGFloat(10)
         
         let item: NSCollectionLayoutItem = {
             let layoutSize = NSCollectionLayoutSize(
@@ -75,7 +80,6 @@ extension HomeCollectionViewController {
                 heightDimension: height
             )
             let item = NSCollectionLayoutItem(layoutSize: layoutSize)
-            let padding = CGFloat(10)
             item.contentInsets = NSDirectionalEdgeInsets(
                 top: 0,
                 leading: padding,
@@ -88,14 +92,19 @@ extension HomeCollectionViewController {
         let supplementaryItems: [NSCollectionLayoutBoundarySupplementaryItem] = {
             let lineItemSize = NSCollectionLayoutSize(
                 widthDimension: .fractionalWidth(1),
-                heightDimension: .absolute(40)
+                heightDimension: .absolute(50)
             )
             let topLineItem = NSCollectionLayoutBoundarySupplementaryItem(
                 layoutSize: lineItemSize,
                 elementKind: SupplementaryViewKind.topLine,
                 alignment: .top
             )
-            topLineItem.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10)
+            topLineItem.contentInsets = NSDirectionalEdgeInsets(
+                top: 0,
+                leading: padding,
+                bottom: 0,
+                trailing: padding
+            )
                 
             return [topLineItem]
         }()

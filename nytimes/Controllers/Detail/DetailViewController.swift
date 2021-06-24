@@ -36,11 +36,6 @@ class DetailViewController: UIViewController {
         ui.isUserInteractionEnabled = true
         ui.addGestureRecognizer(onTap)
 
-        // for corner radius
-        ui.layer.cornerRadius = 5
-        ui.layer.borderWidth = 1
-        ui.layer.borderColor = UIColor.blue.cgColor
-        
         return ui
     }()
     

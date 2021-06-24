@@ -32,6 +32,7 @@ class SearchTableViewController: UITableViewController{
         // for styles
         tableView.backgroundColor = .white
         tableView.rowHeight = 60
+        title = "Search"
         
         // for table-view
         tableView.register(SearchTableViewCell.self, forCellReuseIdentifier: SearchTableViewCell.reuseIdentifier)

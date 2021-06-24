@@ -33,8 +33,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
         let img = UIImageView()
         img.translatesAutoresizingMaskIntoConstraints = false
         img.contentMode = .scaleAspectFit
-        img.layer.masksToBounds = true
-        img.layer.cornerRadius = 10
+//        img.backgroundColor = .red
         return img
     }()
     
