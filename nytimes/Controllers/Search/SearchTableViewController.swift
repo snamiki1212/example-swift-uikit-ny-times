@@ -15,6 +15,12 @@ class SearchTableViewController: UITableViewController{
         return sc
     }()
     
+    private lazy var thisRefreshControl: UIRefreshControl = {
+        let rc = UIRefreshControl()
+        rc.addTarget(self, action: #selector(search), for: .valueChanged)
+        return rc
+    }()
+    
     var searchText: String? {
         didSet {
             navigationItem.searchController?.searchBar.text = searchText
@@ -39,7 +45,7 @@ class SearchTableViewController: UITableViewController{
         
         // for searcher
         navigationItem.searchController = searchController
-        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl = thisRefreshControl
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -65,7 +71,7 @@ class SearchTableViewController: UITableViewController{
 }
 
 extension SearchTableViewController {
-    private func search (){
+    @objc private func search (){
         guard let searchText = self.searchText else {
             refreshControl?.endRefreshing()
             return
