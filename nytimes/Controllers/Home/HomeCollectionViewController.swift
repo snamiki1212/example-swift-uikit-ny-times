@@ -174,8 +174,9 @@ extension HomeCollectionViewController {
 
 extension HomeCollectionViewController {
     private func configureDataSource(){
-        // for sections
         let snapshot = createSnapshot()
+
+        // for sections
         sections = snapshot.sectionIdentifiers
         
         // for dataSource
