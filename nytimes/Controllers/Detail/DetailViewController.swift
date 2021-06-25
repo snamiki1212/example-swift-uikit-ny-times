@@ -27,16 +27,24 @@ class DetailViewController: UIViewController {
     }()
     
     lazy var link: UILabel = {
-        let ui = UILabel()
-        ui.text = " Goto Page "
-        ui.translatesAutoresizingMaskIntoConstraints = false
+        let label = UILabel()
+        label.text = " Goto Page "
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        // button styles
+        label.backgroundColor = .systemBlue
+        label.textColor = .white
+        
+        // for radius style
+        label.layer.cornerRadius = 5
+        label.layer.masksToBounds = true
         
         // for onClick
         let onTap = UITapGestureRecognizer(target: self, action: #selector(onClickLinkButton))
-        ui.isUserInteractionEnabled = true
-        ui.addGestureRecognizer(onTap)
+        label.isUserInteractionEnabled = true
+        label.addGestureRecognizer(onTap)
 
-        return ui
+        return label
     }()
     
     let thumbnail: UIImageView = {
